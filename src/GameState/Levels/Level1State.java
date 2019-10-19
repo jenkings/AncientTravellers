@@ -38,7 +38,7 @@ public class Level1State extends LevelState
 		tileMap.loadMap("/Maps/level1-1.map");
 		tileMap.setPosition(0, 0);
 		tileMap.setTween(0.07);
-		exit = new Exit(tileMap,1200,500);
+		exit = new Exit(tileMap,1200,500,gsm,3);
 		
 		bg = new Background("/Backgrounds/desertbg.png", 0.1);
 		eustac = new Eustac(tileMap);

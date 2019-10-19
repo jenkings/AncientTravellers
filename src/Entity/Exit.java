@@ -5,16 +5,21 @@ import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
 
+import GameState.GameStateManager;
 import TileMap.TileMap;
 
 public class Exit extends MapObject{
 
 	private BufferedImage[] sprites;
 	private int inFinish;
+	private GameStateManager gsm;
+	private int nextState;
 	
-	public Exit(TileMap tm, int x, int y){
+	public Exit(TileMap tm, int x, int y, GameStateManager gsm,int nextState){
 		super(tm);
 		super.setPosition(x, y);
+		this.nextState = nextState;
+		this.gsm = gsm;
 		inFinish = 0;
 		width = 80;
 		height = 80;
@@ -48,7 +53,7 @@ public class Exit extends MapObject{
 	}
 	
 	private void finishedLevel() {
-		System.out.println("Level dokončen");
+		gsm.setState(nextState);
 	}
 	
 	
