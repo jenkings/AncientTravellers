@@ -9,11 +9,11 @@ import Entity.Animation;
 import Entity.Enemy;
 import TileMap.TileMap;
 
-public class Slugger extends Enemy
+public class Ghost extends Enemy
 {
 	private BufferedImage[] sprites;
 	
-	public Slugger(TileMap tm)
+	public Ghost(TileMap tm)
 	{
 		super(tm);
 		

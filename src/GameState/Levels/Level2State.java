@@ -10,7 +10,7 @@ import Entity.Enemy;
 import Entity.Explosion;
 import Entity.HUD;
 import Entity.Controllers.Lever;
-import Entity.Enemies.Slugger;
+import Entity.Enemies.Ghost;
 import Entity.Players.Aporis;
 import Entity.Players.Dryfus;
 import Entity.Players.Eustac;
@@ -62,14 +62,14 @@ public class Level2State extends LevelState
 	private void populateEnemies(){
 		enemies = new ArrayList<Enemy>();
 		
-		Slugger s; 
+		Ghost s; 
 		Point[] points = new Point[] {
 			new Point(50,50),
 			new Point(200,50),
 			new Point(80,200)
 		};
 		for(int i = 0; i < points.length; i++){
-		 	s = new Slugger(tileMap);
+		 	s = new Ghost(tileMap);
 		 	s.setPosition(points[i].x*2, points[i].y*2);
 			enemies.add(s);
 		}
