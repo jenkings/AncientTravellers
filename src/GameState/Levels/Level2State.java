@@ -41,13 +41,13 @@ public class Level2State extends LevelState
 		
 		bg = new Background("/Backgrounds/desertbg.png", 0.1);
 		eustac = new Eustac(tileMap);
-		eustac.setPosition(1300, 150);
+		eustac.setPosition(400, 150);
 		
 		aporis = new Aporis(tileMap);
-		aporis.setPosition(1200, 1200);
+		aporis.setPosition(440, 150);
 		
 		dryfus = new Dryfus(tileMap);
-		dryfus.setPosition(190, 1200);
+		dryfus.setPosition(480, 150);
 		
 		hud = new HUD(eustac,aporis,dryfus);
 		hud.setActualPlayer(actualPlayer);
@@ -61,7 +61,7 @@ public class Level2State extends LevelState
 	
 	private void populateEnemies(){
 		enemies = new ArrayList<Enemy>();
-		
+		/*
 		Ghost s; 
 		Point[] points = new Point[] {
 			new Point(50,50),
@@ -73,18 +73,24 @@ public class Level2State extends LevelState
 		 	s.setPosition(points[i].x*2, points[i].y*2);
 			enemies.add(s);
 		}
+		*/
 	}
 	
 	private void createControlls(){
 		controllers = new ArrayList<Controller>();
 		Controller c; 
 		BlockWorker w;
-		c = new Lever(tileMap, 1200, 150);
+		c = new Lever(tileMap, 1100, 325);
 		w = new BlockWorker(tileMap);
-		w.addChangingBlock(new Point(14,3),0,9);
-		w.addChangingBlock(new Point(15,3),0,9);
-		w.addChangingBlock(new Point(16,3),0,9);
-		w.addChangingBlock(new Point(17,3),0,9);
+		w.addChangingBlock(new Point(21,9),0,22);
+		w.addChangingBlock(new Point(22,9),0,22);
+		c.setWorker(w);
+		controllers.add(c);
+		
+		c = new Lever(tileMap, 530, 800);
+		w = new BlockWorker(tileMap);
+		w.addChangingBlock(new Point(23,9),0,22);
+		w.addChangingBlock(new Point(24,9),0,22);
 		c.setWorker(w);
 		controllers.add(c);
 			
