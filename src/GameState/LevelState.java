@@ -73,6 +73,7 @@ public class LevelState extends GameState{
 
 	@Override
 	public void draw(Graphics2D g) {
+		/*
 		g.setFont(font);
 		g.setColor(Color.white);
 		
@@ -81,7 +82,7 @@ public class LevelState extends GameState{
     		case 1:  g.drawString("CurrentPos: X:" + aporis.getx() + " Y: " + aporis.gety(), 2, 50);;break;
     		case 2:  g.drawString("CurrentPos: X:" + dryfus.getx() + " Y: " + dryfus.gety(), 2, 50);;break;
 		}
-		
+		*/
 		
 		
 	}
