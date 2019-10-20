@@ -19,6 +19,8 @@ import Entity.Players.Dryfus;
 import Entity.Players.Eustac;
 
 public class LevelState extends GameState{
+	public static final boolean DEBUG = true;
+	
 	protected Eustac eustac;
 	protected Aporis aporis;
 	protected Dryfus dryfus;
@@ -73,19 +75,17 @@ public class LevelState extends GameState{
 
 	@Override
 	public void draw(Graphics2D g) {
-		/*
-		g.setFont(font);
-		g.setColor(Color.white);
-		
-		switch (actualPlayer) {
-    		case 0:  g.drawString("CurrentPos: X:" + eustac.getx() + " Y: " + eustac.gety(), 2, 50);;break;
-    		case 1:  g.drawString("CurrentPos: X:" + aporis.getx() + " Y: " + aporis.gety(), 2, 50);;break;
-    		case 2:  g.drawString("CurrentPos: X:" + dryfus.getx() + " Y: " + dryfus.gety(), 2, 50);;break;
+		if(LevelState.DEBUG) {
+			g.setFont(font);
+			g.setColor(Color.white);
+			
+			switch (actualPlayer) {
+	    		case 0:  g.drawString("CurrentPos: X:" + eustac.getx() + " Y: " + eustac.gety(), 2, 50);;break;
+	    		case 1:  g.drawString("CurrentPos: X:" + aporis.getx() + " Y: " + aporis.gety(), 2, 50);;break;
+	    		case 2:  g.drawString("CurrentPos: X:" + dryfus.getx() + " Y: " + dryfus.gety(), 2, 50);;break;
+			}
 		}
-		
-		*/
-		
-		
+
 	}
 
 	public void keyPressed(int k) {
