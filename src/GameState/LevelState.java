@@ -1,7 +1,12 @@
 package GameState;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Graphics2D;
+import java.awt.GraphicsEnvironment;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import Entity.Controller;
@@ -23,9 +28,22 @@ public class LevelState extends GameState{
 	protected ArrayList<Explosion> explosions;
 	protected ArrayList<Controller> controllers;
 	protected Exit exit;
+	
+	private Font font;
 
 	public LevelState(GameStateManager gsm){
 		this.gsm = gsm;
+		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		try {
+			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/Font/joystix.ttf")));
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		font = new Font("Joystix Monospace", Font.PLAIN, 15);
 		init();
 	}
 
@@ -55,7 +73,16 @@ public class LevelState extends GameState{
 
 	@Override
 	public void draw(Graphics2D g) {
-		// TODO Auto-generated method stub
+		g.setFont(font);
+		g.setColor(Color.white);
+		
+		switch (actualPlayer) {
+    		case 0:  g.drawString("CurrentPos: X:" + eustac.getx() + " Y: " + eustac.gety(), 2, 50);;break;
+    		case 1:  g.drawString("CurrentPos: X:" + aporis.getx() + " Y: " + aporis.gety(), 2, 50);;break;
+    		case 2:  g.drawString("CurrentPos: X:" + dryfus.getx() + " Y: " + dryfus.gety(), 2, 50);;break;
+		}
+		
+		
 		
 	}
 

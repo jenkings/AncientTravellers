@@ -191,6 +191,7 @@ public class Level1State extends LevelState
 		
 		// draw hud
 		hud.draw(g);
+		super.draw(g);
 	}
 		
 }

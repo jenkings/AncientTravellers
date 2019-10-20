@@ -43,7 +43,8 @@ public class Level2State extends LevelState
 		
 		bg = new Background("/Backgrounds/desertbg.png", 0.1);
 		eustac = new Eustac(tileMap);
-		eustac.setPosition(400, 150);
+		//eustac.setPosition(400, 150);
+		eustac.setPosition(1000, 800);
 		
 		aporis = new Aporis(tileMap);
 		aporis.setPosition(440, 150);
@@ -63,19 +64,19 @@ public class Level2State extends LevelState
 	
 	private void populateEnemies(){
 		enemies = new ArrayList<Enemy>();
-		/*
+		
 		Ghost s; 
 		Point[] points = new Point[] {
-			new Point(50,50),
-			new Point(200,50),
-			new Point(80,200)
+			new Point(200,1400),
+			new Point(700,1400),
+			new Point(1100,800)
 		};
 		for(int i = 0; i < points.length; i++){
 		 	s = new Ghost(tileMap);
-		 	s.setPosition(points[i].x*2, points[i].y*2);
+		 	s.setPosition(points[i].x, points[i].y);
 			enemies.add(s);
 		}
-		*/
+		
 	}
 	
 	private void createControlls(){
@@ -188,6 +189,7 @@ public class Level2State extends LevelState
 		
 		// draw hud
 		hud.draw(g);
+		super.draw(g);
 	}
 		
 }
