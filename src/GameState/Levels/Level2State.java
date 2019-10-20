@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import Entity.Controller;
 import Entity.Enemy;
+import Entity.Exit;
 import Entity.Explosion;
 import Entity.HUD;
 import Entity.Controllers.Lever;
@@ -38,6 +39,7 @@ public class Level2State extends LevelState
 		tileMap.loadMap("/Maps/level1-2.map");
 		tileMap.setPosition(0, 0);
 		tileMap.setTween(0.07);
+		exit = new Exit(tileMap,1750,140,gsm,0);
 		
 		bg = new Background("/Backgrounds/desertbg.png", 0.1);
 		eustac = new Eustac(tileMap);
@@ -144,14 +146,23 @@ public class Level2State extends LevelState
 			if(controllers.get(j).intersects(dryfus)){dryfus.setNearestController(controllers.get(j));}
 		}
 		
+		//check, if all characters are in finish zone
+		int finished = 0;
+		if(exit.intersects(aporis)){finished++;}
+		if(exit.intersects(eustac)){finished++;}
+		if(exit.intersects(dryfus)){finished++;}
+		exit.setInFinish(finished);
+		
 	}
 	
 	public void draw(Graphics2D g) {
 		// draw background
 		bg.draw(g); 
 		
+		exit.update();
 		// draw tilemap
 		tileMap.draw(g);	
+		exit.draw(g);
 		
 		// draw controllers
 		for(int i = 0; i < controllers.size(); i++){
