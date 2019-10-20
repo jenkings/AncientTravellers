@@ -35,7 +35,7 @@ public class Level2State extends LevelState
 	public void init() {
 		tileMap = new TileMap(60);
 		tileMap.loadTiles("/Tilesets/desert.png");
-		tileMap.loadMap("/Maps/level1-1.map");
+		tileMap.loadMap("/Maps/level1-2.map");
 		tileMap.setPosition(0, 0);
 		tileMap.setTween(0.07);
 		
