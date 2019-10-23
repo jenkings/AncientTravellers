@@ -12,6 +12,7 @@ import Entity.Explosion;
 import Entity.HUD;
 import Entity.Controllers.Lever;
 import Entity.Enemies.Ghost;
+import Entity.Enemies.Mummy;
 import Entity.Players.Aporis;
 import Entity.Players.Dryfus;
 import Entity.Players.Eustac;
@@ -43,8 +44,7 @@ public class Level2State extends LevelState
 		
 		bg = new Background("/Backgrounds/desertbg.png", 0.1);
 		eustac = new Eustac(tileMap);
-		//eustac.setPosition(400, 150);
-		eustac.setPosition(1000, 800);
+		eustac.setPosition(400, 150);
 		
 		aporis = new Aporis(tileMap);
 		aporis.setPosition(440, 150);
@@ -76,6 +76,9 @@ public class Level2State extends LevelState
 		 	s.setPosition(points[i].x, points[i].y);
 			enemies.add(s);
 		}
+		Mummy m = new Mummy(tileMap);
+		m.setPosition(550,150);
+		enemies.add(m);
 		
 	}
 	

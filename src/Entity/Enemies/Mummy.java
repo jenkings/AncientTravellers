@@ -9,18 +9,18 @@ import Entity.Animation;
 import Entity.Enemy;
 import TileMap.TileMap;
 
-public class Ghost extends Enemy
+public class Mummy extends Enemy
 {
 	private BufferedImage[] sprites;
 	
-	public Ghost(TileMap tm)
+	public Mummy(TileMap tm)
 	{
 		super(tm);
 		
-		moveSpeed = 0.5;
-		maxSpeed = 0.5;
+		moveSpeed = 0.3;
+		maxSpeed = 0.3;
 		fallSpeed = 0.2;
-		maxFallSpeed = 5.00;
+		maxFallSpeed = 10.00;
 		 
 		width = 60;
 		height = 60;
@@ -33,7 +33,7 @@ public class Ghost extends Enemy
 		// load sprites
 		try 
 		{
-			BufferedImage spritesheet = ImageIO.read(getClass().getResourceAsStream("/Sprites/Enemies/ghost.png"));
+			BufferedImage spritesheet = ImageIO.read(getClass().getResourceAsStream("/Sprites/Enemies/mummy.png"));
 			sprites = new BufferedImage[3];
 			for(int i = 0; i < sprites.length; i++)
 			{
