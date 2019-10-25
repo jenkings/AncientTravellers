@@ -23,8 +23,7 @@ import TileMap.Background;
 import TileMap.TileMap;
 import Workers.BlockWorker;
 
-public class Level2State extends LevelState
-{
+public class Level2State extends LevelState{
 	private TileMap tileMap;
 	private Background bg;
 	
@@ -77,9 +76,8 @@ public class Level2State extends LevelState
 			enemies.add(s);
 		}
 		Mummy m = new Mummy(tileMap);
-		m.setPosition(550,150);
+		m.setPosition(550,215);
 		enemies.add(m);
-		
 	}
 	
 	private void createControlls(){
@@ -122,8 +120,7 @@ public class Level2State extends LevelState
 		for(int i = 0; i < enemies.size(); i++){
 			Enemy e  = enemies.get(i);
 			e.update();
-			if(e.isDead())
-			{
+			if(e.isDead()){
 				enemies.remove(i);
 				i--;
 				explosions.add(new Explosion(e.getx(), e.gety()));
@@ -133,8 +130,7 @@ public class Level2State extends LevelState
 		// update all explosions
 		for(int i = 0; i < explosions.size(); i ++){
 			explosions.get(i).update();
-			if(explosions.get(i).shouldRemove())
-					{
+			if(explosions.get(i).shouldRemove()){
 						explosions.remove(i);
 						i--;
 					}
@@ -184,8 +180,7 @@ public class Level2State extends LevelState
 		}
 
 		// draw explosions
-		for(int i = 0; i < explosions.size(); i++)
-		{
+		for(int i = 0; i < explosions.size(); i++){
 			explosions.get(i).setMapPosition((int)tileMap.getx(), (int)tileMap.gety());
 			explosions.get(i).draw(g);
 		}

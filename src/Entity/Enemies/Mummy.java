@@ -7,6 +7,7 @@ import javax.imageio.ImageIO;
 
 import Entity.Animation;
 import Entity.Enemy;
+import TileMap.Tile;
 import TileMap.TileMap;
 
 public class Mummy extends Enemy
@@ -86,6 +87,14 @@ public class Mummy extends Enemy
 		getNextPosition();
 		checkTileMapCollision();
 		setPosition(xtemp, ytemp);
+		if(right && br == Tile.NORMAL) {
+			dx = 0;
+		}
+		
+		if(left && bl == Tile.NORMAL) {
+			dx = 0;
+		}
+		
 		
 		// check flinching
 		if(flinching)
