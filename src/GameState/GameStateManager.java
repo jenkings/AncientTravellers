@@ -47,6 +47,10 @@ public class GameStateManager
 		gameStates.get(currentState).keyPressed(k);
 	}
 	
+	public int getCurrentState() {
+		return this.currentState;
+	}
+	
 	public void keyReleased(int k)
 	{
 		gameStates.get(currentState).keyReleased(k);
