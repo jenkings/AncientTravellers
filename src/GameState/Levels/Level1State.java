@@ -33,6 +33,7 @@ public class Level1State extends LevelState
 	}
 	
 	public void init() {
+		super.init();
 		tileMap = new TileMap(60);
 		tileMap.loadTiles("/Tilesets/desert.png");
 		tileMap.loadMap("/Maps/level1-1.map");
@@ -56,9 +57,6 @@ public class Level1State extends LevelState
 		populateEnemies();
 		createControlls();
 		
-		explosions = new ArrayList<Explosion>();
-		
-		
 		new java.util.Timer().schedule( 
 		        new java.util.TimerTask() {
 		            @Override
@@ -72,8 +70,6 @@ public class Level1State extends LevelState
 	}
 	
 	private void populateEnemies(){
-		enemies = new ArrayList<Enemy>();
-		
 		Ghost s; 
 		Point[] points = new Point[] {
 			new Point(50,50),
@@ -88,7 +84,6 @@ public class Level1State extends LevelState
 	}
 	
 	private void createControlls(){
-		controllers = new ArrayList<Controller>();
 		Controller c; 
 		BlockWorker w;
 		c = new Lever(tileMap, 1200, 150);

@@ -15,6 +15,7 @@ import Entity.Enemy;
 import Entity.Exit;
 import Entity.Explosion;
 import Entity.HUD;
+import Entity.Solid;
 import Entity.Players.Aporis;
 import Entity.Players.Dryfus;
 import Entity.Players.Eustac;
@@ -31,10 +32,11 @@ public class LevelState extends GameState{
 	protected ArrayList<Enemy> enemies;
 	protected ArrayList<Explosion> explosions;
 	protected ArrayList<Controller> controllers;
+	protected ArrayList<Solid> solids;
 	protected Exit exit;
 	protected boolean paused = false;
 	private int pauseChoice = 0;
-	
+
 	private Font font;
 	private Font pausefont;
 
@@ -57,13 +59,15 @@ public class LevelState extends GameState{
 
 	@Override
 	public void init() {
-		// TODO Auto-generated method stub
+		enemies = new ArrayList<Enemy>();
+		solids = new ArrayList<Solid>();
+		explosions = new ArrayList<Explosion>();
+		controllers = new ArrayList<Controller>();
 	}
 	
 	protected void checkAlive() {
 		if(aporis.getHealth() <= 0 && dryfus.getHealth() <= 0 && eustac.getHealth() <= 0)
 			failedLevel();
-		
 		if(actualPlayer == 0 && eustac.getHealth() <=0)
 			switchActualPlayer();
 		else if(actualPlayer == 1 && aporis.getHealth() <=0)
@@ -100,9 +104,14 @@ public class LevelState extends GameState{
 		for(int i = 0; i < explosions.size(); i ++){
 			explosions.get(i).update();
 			if(explosions.get(i).shouldRemove()){
-						explosions.remove(i);
-						i--;
-					}
+				explosions.remove(i);
+				i--;
+			}
+		}
+		
+		// update all solids
+		for(int i = 0; i < solids.size(); i ++){
+			//solids.get(i).update();
 		}
 		
 		//Check if characters are near controller
@@ -245,7 +254,6 @@ public class LevelState extends GameState{
 				}
 			}
 		}
-		
 	}
 
 	public void keyReleased(int k) {
@@ -256,7 +264,6 @@ public class LevelState extends GameState{
 	            	case 1:  aporis.setLeft(false);break;
 	            	case 2:  dryfus.setLeft(false);break;
 				}
-
 			}
 			if(k == KeyEvent.VK_RIGHT){
 				switch (actualPlayer) {
@@ -287,13 +294,12 @@ public class LevelState extends GameState{
 				}
 			}	
 		}
-		
 	}
-	
+
 	protected void failedLevel() {
-		//TODO: restart
+		gsm.setState(gsm.getCurrentState());
 	}
-	
+
 	private void drawPauseMenu(Graphics2D g) {
 		if(paused) {
             g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.8f));
@@ -310,10 +316,8 @@ public class LevelState extends GameState{
 			g.drawString("QUIT", GamePanel.WIDTH/2 - 70, 380);
 		}
 	}
-	
-	
+
 	protected void switchActualPlayer() {
-		
 		actualPlayer ++;
 		if(actualPlayer >2)
 				actualPlayer=0;
