@@ -104,58 +104,14 @@ public class Level1State extends LevelState
 	
 	
 	public void update() {
-		checkAlive();
-		// update player
-		eustac.update();
-		aporis.update();
-		dryfus.update();
+		super.update();
+		if(paused) return;
+
 		switch (actualPlayer) {
-        	case 0:  tileMap.setPosition(GamePanel.WIDTH / 2 - eustac.getx(), GamePanel.HEIGHT / 2 - eustac.gety()); break;
-        	case 1:  tileMap.setPosition(GamePanel.WIDTH / 2 - aporis.getx(), GamePanel.HEIGHT / 2 - aporis.gety());break;
-        	case 2:  tileMap.setPosition(GamePanel.WIDTH / 2 - dryfus.getx(), GamePanel.HEIGHT / 2 - dryfus.gety());break;
+	    	case 0:  tileMap.setPosition(GamePanel.WIDTH / 2 - eustac.getx(), GamePanel.HEIGHT / 2 - eustac.gety()); break;
+	    	case 1:  tileMap.setPosition(GamePanel.WIDTH / 2 - aporis.getx(), GamePanel.HEIGHT / 2 - aporis.gety());break;
+	    	case 2:  tileMap.setPosition(GamePanel.WIDTH / 2 - dryfus.getx(), GamePanel.HEIGHT / 2 - dryfus.gety());break;
 		}
-		eustac.checkAttack(enemies);
-		aporis.checkAttack(enemies);
-		dryfus.checkAttack(enemies);
-		
-		// update all enemies
-		for(int i = 0; i < enemies.size(); i++){
-			Enemy e  = enemies.get(i);
-			e.update();
-			if(e.isDead())
-			{
-				enemies.remove(i);
-				i--;
-				explosions.add(new Explosion(e.getx(), e.gety()));
-			}
-		}
-		
-		// update all explosions
-		for(int i = 0; i < explosions.size(); i ++){
-			explosions.get(i).update();
-			if(explosions.get(i).shouldRemove())
-					{
-						explosions.remove(i);
-						i--;
-					}
-		}
-		
-		//Check if characters are near controller
-		aporis.setNearestController(null);
-		eustac.setNearestController(null);
-		dryfus.setNearestController(null);
-		for(int j = 0; j < controllers.size(); j++){
-			if(controllers.get(j).intersects(aporis)){aporis.setNearestController(controllers.get(j));}
-			if(controllers.get(j).intersects(eustac)){eustac.setNearestController(controllers.get(j));}
-			if(controllers.get(j).intersects(dryfus)){dryfus.setNearestController(controllers.get(j));}
-		}
-		
-		//check, if all characters are in finish zone
-		int finished = 0;
-		if(exit.intersects(aporis)){finished++;}
-		if(exit.intersects(eustac)){finished++;}
-		if(exit.intersects(dryfus)){finished++;}
-		exit.setInFinish(finished);
 		
 	}
 	
