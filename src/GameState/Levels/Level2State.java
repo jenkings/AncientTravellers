@@ -16,6 +16,7 @@ import Entity.Enemies.Mummy;
 import Entity.Players.Aporis;
 import Entity.Players.Dryfus;
 import Entity.Players.Eustac;
+import Entity.Solids.Platform;
 import GameState.GameStateManager;
 import GameState.LevelState;
 import Main.GamePanel;
@@ -53,6 +54,8 @@ public class Level2State extends LevelState{
 		
 		hud = new HUD(eustac,aporis,dryfus);
 		hud.setActualPlayer(actualPlayer);
+		
+		solids.add(new Platform(tileMap,200,280));
 		
 		populateEnemies();
 		createControlls();
@@ -129,6 +132,11 @@ public class Level2State extends LevelState{
 			enemies.get(i).draw(g);
 		}
 
+		// draw solids
+		for(int i = 0; i < solids.size(); i++){
+			solids.get(i).draw(g);
+		}
+		
 		// draw explosions
 		for(int i = 0; i < explosions.size(); i++){
 			explosions.get(i).setMapPosition((int)tileMap.getx(), (int)tileMap.gety());

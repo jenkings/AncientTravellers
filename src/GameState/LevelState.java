@@ -111,7 +111,7 @@ public class LevelState extends GameState{
 		
 		// update all solids
 		for(int i = 0; i < solids.size(); i ++){
-			//solids.get(i).update();
+			solids.get(i).update();
 		}
 		
 		//Check if characters are near controller
