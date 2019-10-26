@@ -26,8 +26,7 @@ import Workers.BlockWorker;
 public class Level2State extends LevelState{
 	private TileMap tileMap;
 	private Background bg;
-	
-	
+
 	public Level2State(GameStateManager gsm){
 		super(gsm);
 		init();

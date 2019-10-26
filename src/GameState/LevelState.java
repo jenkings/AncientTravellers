@@ -1,5 +1,6 @@
 package GameState;
 
+import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
@@ -32,6 +33,7 @@ public class LevelState extends GameState{
 	protected ArrayList<Controller> controllers;
 	protected Exit exit;
 	protected boolean paused = false;
+	private int pauseChoice = 0;
 	
 	private Font font;
 	private Font pausefont;
@@ -56,7 +58,6 @@ public class LevelState extends GameState{
 	@Override
 	public void init() {
 		// TODO Auto-generated method stub
-		
 	}
 	
 	protected void checkAlive() {
@@ -134,13 +135,7 @@ public class LevelState extends GameState{
 	    		case 2:  g.drawString("CurrentPos: X:" + dryfus.getx() + " Y: " + dryfus.gety(), 2, 50);break;
 			}
 		}
-		
-		if(paused) {
-			g.setFont(pausefont);
-			g.setColor(Color.white);
-			g.drawString("PAUSED", GamePanel.WIDTH/2, GamePanel.HEIGHT/2);
-		}
-
+		drawPauseMenu(g);
 	}
 
 	public void keyPressed(int k) {
@@ -149,11 +144,17 @@ public class LevelState extends GameState{
 		if(dryfus.getMonolog() != null) dryfus.setMonolog(null);
 		
 		if(k == KeyEvent.VK_ESCAPE){
+			if(this.paused == false) {
+				this.pauseChoice = 0;
+			}
 			this.paused = !this.paused;
 		}
 		
 		if(k == KeyEvent.VK_P){
-			this.paused = true;
+			if(this.paused == false) {
+				this.paused = true;
+				this.pauseChoice = 0;
+			}
 		}
 		
 		//ovládání hry
@@ -211,6 +212,30 @@ public class LevelState extends GameState{
 					case 2:  dryfus.interact();break;
 				}
 			}
+		}else {
+			if(k == KeyEvent.VK_UP){
+				pauseChoice --;
+				if(pauseChoice < 0) pauseChoice = 2;
+			}
+			if(k == KeyEvent.VK_DOWN){
+				pauseChoice ++;
+				if(pauseChoice > 2) pauseChoice = 0;
+			}
+			if(k == KeyEvent.VK_ENTER){
+				switch(pauseChoice) {
+				case 0:
+					paused = false;
+					break;
+				case 1:
+					gsm.setState(gsm.getCurrentState());
+					paused = false;
+					break;
+				case 2:
+					gsm.setState(GameStateManager.MENUSTATE);
+					paused = false;
+					break;
+				}
+			}
 		}
 		
 	}
@@ -259,6 +284,23 @@ public class LevelState extends GameState{
 	
 	protected void failedLevel() {
 		//TODO: restart
+	}
+	
+	private void drawPauseMenu(Graphics2D g) {
+		if(paused) {
+            g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.8f));
+			g.setColor(Color.BLACK);
+			g.fillRect(0,0,GamePanel.WIDTH,GamePanel.HEIGHT);
+			g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+			
+			g.setFont(pausefont);
+			g.setColor(pauseChoice == 0 ? new Color(255, 255, 50) : Color.white);
+			g.drawString("RETURN", GamePanel.WIDTH/2 - 70, 280);
+			g.setColor(pauseChoice == 1 ? new Color(255, 255, 50) : Color.white);
+			g.drawString("RESTART", GamePanel.WIDTH/2 - 70, 330);
+			g.setColor(pauseChoice == 2 ? new Color(255, 255, 50) : Color.white);
+			g.drawString("QUIT", GamePanel.WIDTH/2 - 70, 380);
+		}
 	}
 	
 	
