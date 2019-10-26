@@ -21,7 +21,7 @@ import Entity.Players.Eustac;
 import Main.GamePanel;
 
 public class LevelState extends GameState{
-	public static final boolean DEBUG = true;
+	public static boolean DEBUG = false;
 	
 	protected Eustac eustac;
 	protected Aporis aporis;
@@ -130,9 +130,9 @@ public class LevelState extends GameState{
 			g.setColor(Color.white);
 			
 			switch (actualPlayer) {
-	    		case 0:  g.drawString("CurrentPos: X:" + eustac.getx() + " Y: " + eustac.gety(), 2, 50);break;
-	    		case 1:  g.drawString("CurrentPos: X:" + aporis.getx() + " Y: " + aporis.gety(), 2, 50);break;
-	    		case 2:  g.drawString("CurrentPos: X:" + dryfus.getx() + " Y: " + dryfus.gety(), 2, 50);break;
+	    		case 0:  g.drawString("CurrentPos: X:" + eustac.getx() + " Y: " + eustac.gety(), 2, 20);break;
+	    		case 1:  g.drawString("CurrentPos: X:" + aporis.getx() + " Y: " + aporis.gety(), 2, 20);break;
+	    		case 2:  g.drawString("CurrentPos: X:" + dryfus.getx() + " Y: " + dryfus.gety(), 2, 20);break;
 			}
 		}
 		drawPauseMenu(g);
@@ -142,6 +142,10 @@ public class LevelState extends GameState{
 		if(eustac.getMonolog() != null) eustac.setMonolog(null);
 		if(aporis.getMonolog() != null) aporis.setMonolog(null);
 		if(dryfus.getMonolog() != null) dryfus.setMonolog(null);
+		
+		if(k == KeyEvent.VK_F11){
+			LevelState.DEBUG = !LevelState.DEBUG;
+		}
 		
 		if(k == KeyEvent.VK_ESCAPE){
 			if(this.paused == false) {
@@ -204,6 +208,10 @@ public class LevelState extends GameState{
 			}
 			if(k == KeyEvent.VK_CONTROL){
 				switchActualPlayer();
+				eustac.setUp(false);eustac.setDown(false);eustac.setLeft(false);eustac.setRight(false);
+				aporis.setUp(false);aporis.setDown(false);aporis.setLeft(false);aporis.setRight(false);
+				dryfus.setUp(false);dryfus.setDown(false);dryfus.setLeft(false);dryfus.setRight(false);
+				
 			}
 			if(k == KeyEvent.VK_ALT){
 				switch (actualPlayer) {
