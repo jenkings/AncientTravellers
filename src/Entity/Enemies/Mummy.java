@@ -7,6 +7,7 @@ import javax.imageio.ImageIO;
 
 import Entity.Animation;
 import Entity.Enemy;
+import Sound.Sound;
 import TileMap.Tile;
 import TileMap.TileMap;
 
@@ -53,7 +54,17 @@ public class Mummy extends Enemy
 		
 		right = true;
 		facingRight = true;
-	}	
+	}
+	
+	public boolean isDead() {
+		if(dead) {
+			System.out.println("dead");
+			Sound sound = new Sound("/Sound/Effects/ghost-death.wav");
+			sound.play();
+		}
+		
+		return dead;
+	}
 	
 	private void getNextPosition()
 	{

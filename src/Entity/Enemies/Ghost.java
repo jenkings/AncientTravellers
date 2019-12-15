@@ -7,6 +7,7 @@ import javax.imageio.ImageIO;
 
 import Entity.Animation;
 import Entity.Enemy;
+import Sound.Sound;
 import TileMap.TileMap;
 
 public class Ghost extends Enemy
@@ -29,7 +30,7 @@ public class Ghost extends Enemy
 		
 		health = maxHealth = 2;
 		damage = 1;
-		
+
 		// load sprites
 		try 
 		{
@@ -111,6 +112,16 @@ public class Ghost extends Enemy
 
 		//update animation
 		animation.update();
+	}
+	
+	public boolean isDead() {
+		if(dead) {
+			System.out.println("dead");
+			Sound sound = new Sound("/Sound/Effects/ghost-death.wav");
+			sound.play();
+		}
+		
+		return dead;
 	}
 	
 	public void draw(Graphics2D g)

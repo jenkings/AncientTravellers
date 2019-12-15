@@ -158,7 +158,7 @@ public class LevelState extends GameState{
 		}
 		
 		if(k == KeyEvent.VK_ESCAPE){
-			Sound sound = new Sound("/Sound/pause.wav");
+			Sound sound = new Sound("/Sound/menu-interact.wav");
 			sound.play();
 			if(this.paused == false) {
 				this.pauseChoice = 0;
@@ -168,7 +168,7 @@ public class LevelState extends GameState{
 		
 		if(k == KeyEvent.VK_P){
 			if(this.paused == false) {
-				Sound sound = new Sound("/Sound/pause.wav");
+				Sound sound = new Sound("/Sound/menu-interact.wav");
 				sound.play();
 				this.paused = true;
 				this.pauseChoice = 0;
@@ -261,7 +261,7 @@ public class LevelState extends GameState{
 					paused = false;
 					break;
 				}
-				Sound sound = new Sound("/Sound/pause.wav");
+				Sound sound = new Sound("/Sound/menu-interact.wav");
 				sound.play();
 			}
 		}

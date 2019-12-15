@@ -1,6 +1,5 @@
 package Entity;
 import java.awt.Graphics2D;
-import java.util.ArrayList;
 
 import Dialogs.Monolog;
 import TileMap.TileMap;

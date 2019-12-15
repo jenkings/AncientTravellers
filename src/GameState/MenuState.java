@@ -76,19 +76,23 @@ public class MenuState extends GameState
 	}
 	
 	public void keyPressed(int k) {
-		Sound sound = new Sound("/Sound/menu.wav");
-		sound.play();
 		
 		if(k == KeyEvent.VK_ENTER){
+			Sound sound = new Sound("/Sound/menu-interact.wav");
+			sound.play();
 			select();
 		}
 		if(k == KeyEvent.VK_UP){
+			Sound sound = new Sound("/Sound/menu.wav");
+			sound.play();
 			currentChoice --;
 			if(currentChoice == -1){
 				currentChoice = optionsLength -1;
 			}
 		}
 		if(k == KeyEvent.VK_DOWN){
+			Sound sound = new Sound("/Sound/menu.wav");
+			sound.play();
 			currentChoice ++;
 			if(currentChoice == optionsLength){
 				currentChoice = 0;

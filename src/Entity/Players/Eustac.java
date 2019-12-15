@@ -11,6 +11,7 @@ import Entity.Arrow;
 import Entity.Enemy;
 import Entity.Player;
 import Entity.Solid;
+import Sound.Sound;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -116,14 +117,16 @@ public class Eustac extends Player
 	public int getFire() { return fire; }
 	public int getMaxFire() { return maxFire; }
 	
-	public void setFiring() 
-	{
+	public void setFiring() {
+		Sound sound = new Sound("/Sound/Effects/arrow.wav");
+		sound.play();
 		firing = true;
 		
 	}
 	
-	public void setScratching() 
-	{
+	public void setScratching() {
+		Sound sound = new Sound("/Sound/Effects/sword.wav");
+		sound.play();
 		scratching = true;
 	}
 
