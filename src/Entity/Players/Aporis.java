@@ -9,6 +9,7 @@ import javax.imageio.ImageIO;
 import Entity.Animation;
 import Entity.Enemy;
 import Entity.Player;
+import Entity.Solid;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -197,13 +198,13 @@ public class Aporis extends Player
 		}
 	}
 	
-	public void update() 
+	public void update(ArrayList<Solid> solids) 
 	{
 		// update position
 		getNextPosition();
 		checkTileMapCollision();
+		super.checkSolidCollision(solids);
 		setPosition(xtemp, ytemp);
-		
 		
 		// check done flinching 
 		if(flinching)

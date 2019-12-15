@@ -20,6 +20,7 @@ import Entity.Players.Aporis;
 import Entity.Players.Dryfus;
 import Entity.Players.Eustac;
 import Main.GamePanel;
+import Sound.Sound;
 
 public class LevelState extends GameState{
 	public static boolean DEBUG = false;
@@ -81,9 +82,9 @@ public class LevelState extends GameState{
 		if(paused) return;
 		checkAlive();
 		// update player
-		eustac.update();
-		aporis.update();
-		dryfus.update();
+		eustac.update(solids);
+		aporis.update(solids);
+		dryfus.update(solids);
 		
 		eustac.checkAttack(enemies);
 		aporis.checkAttack(enemies);
@@ -157,6 +158,8 @@ public class LevelState extends GameState{
 		}
 		
 		if(k == KeyEvent.VK_ESCAPE){
+			Sound sound = new Sound("/Sound/pause.wav");
+			sound.play();
 			if(this.paused == false) {
 				this.pauseChoice = 0;
 			}
@@ -165,6 +168,8 @@ public class LevelState extends GameState{
 		
 		if(k == KeyEvent.VK_P){
 			if(this.paused == false) {
+				Sound sound = new Sound("/Sound/pause.wav");
+				sound.play();
 				this.paused = true;
 				this.pauseChoice = 0;
 			}
@@ -231,10 +236,14 @@ public class LevelState extends GameState{
 			}
 		}else {
 			if(k == KeyEvent.VK_UP){
+				Sound sound = new Sound("/Sound/menu.wav");
+				sound.play();
 				pauseChoice --;
 				if(pauseChoice < 0) pauseChoice = 2;
 			}
 			if(k == KeyEvent.VK_DOWN){
+				Sound sound = new Sound("/Sound/menu.wav");
+				sound.play();
 				pauseChoice ++;
 				if(pauseChoice > 2) pauseChoice = 0;
 			}
@@ -252,6 +261,8 @@ public class LevelState extends GameState{
 					paused = false;
 					break;
 				}
+				Sound sound = new Sound("/Sound/pause.wav");
+				sound.play();
 			}
 		}
 	}

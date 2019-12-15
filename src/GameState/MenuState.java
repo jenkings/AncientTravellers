@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 
 import Main.GamePanel;
+import Sound.Sound;
 import TileMap.Background;
 
 public class MenuState extends GameState
@@ -75,6 +76,9 @@ public class MenuState extends GameState
 	}
 	
 	public void keyPressed(int k) {
+		Sound sound = new Sound("/Sound/menu.wav");
+		sound.play();
+		
 		if(k == KeyEvent.VK_ENTER){
 			select();
 		}

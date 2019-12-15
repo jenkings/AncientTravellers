@@ -10,6 +10,7 @@ import Entity.Animation;
 import Entity.Arrow;
 import Entity.Enemy;
 import Entity.Player;
+import Entity.Solid;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -164,8 +165,7 @@ public class Eustac extends Player
 			}
 			
 			// check enemy collision
-			if(intersects(e))
-			{
+			if(intersects(e)){
 				hit(e.getDamage());
 			}
 			
@@ -261,11 +261,12 @@ public class Eustac extends Player
 			onLadder = false;
 	}
 	
-	public void update() 
+	public void update(ArrayList<Solid> solids) 
 	{
 		// update position
 		getNextPosition();
 		checkTileMapCollision();
+		super.checkSolidCollision(solids);
 		setPosition(xtemp, ytemp);
 		
 		// check attack has stopped

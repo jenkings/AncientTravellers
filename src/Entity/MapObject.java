@@ -2,6 +2,7 @@ package Entity;
 
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 
 import Main.GamePanel;
 import TileMap.Tile;
@@ -111,6 +112,10 @@ public abstract class MapObject
 		topRight = tr == Tile.BLOCKED;
 		bottomRight = br == Tile.BLOCKED;
 		bottomLeft = bl == Tile.BLOCKED;	
+	}
+	
+	public void checkSolidCollision(ArrayList<Solid> solids){
+		
 	}
 	
 	public void checkTileMapCollision()

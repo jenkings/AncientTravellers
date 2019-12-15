@@ -2,13 +2,9 @@ package GameState.Levels;
 
 import java.awt.Graphics2D;
 import java.awt.Point;
-import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 
 import Entity.Controller;
-import Entity.Enemy;
 import Entity.Exit;
-import Entity.Explosion;
 import Entity.HUD;
 import Entity.Controllers.Lever;
 import Entity.Enemies.Ghost;
@@ -45,18 +41,18 @@ public class Level2State extends LevelState{
 		bg = new Background("/Backgrounds/desertbg.png", 0.1);
 		eustac = new Eustac(tileMap);
 		eustac.setPosition(400, 150);
-		
+
 		aporis = new Aporis(tileMap);
 		aporis.setPosition(440, 150);
-		
+
 		dryfus = new Dryfus(tileMap);
 		dryfus.setPosition(480, 150);
-		
+
 		hud = new HUD(eustac,aporis,dryfus);
 		hud.setActualPlayer(actualPlayer);
-		
+
 		solids.add(new Platform(tileMap,200,280));
-		
+
 		populateEnemies();
 		createControlls();
 	}
@@ -116,17 +112,17 @@ public class Level2State extends LevelState{
 		// draw tilemap
 		tileMap.draw(g);	
 		exit.draw(g);
-		
+
 		// draw controllers
 		for(int i = 0; i < controllers.size(); i++){
 			controllers.get(i).draw(g);
 		}
-		
+
 		// draw players
 		eustac.draw(g);
 		aporis.draw(g);
 		dryfus.draw(g);
-		
+
 		// draw enemies
 		for(int i = 0; i < enemies.size(); i++){
 			enemies.get(i).draw(g);
@@ -136,13 +132,13 @@ public class Level2State extends LevelState{
 		for(int i = 0; i < solids.size(); i++){
 			solids.get(i).draw(g);
 		}
-		
+
 		// draw explosions
 		for(int i = 0; i < explosions.size(); i++){
 			explosions.get(i).setMapPosition((int)tileMap.getx(), (int)tileMap.gety());
 			explosions.get(i).draw(g);
 		}
-		
+
 		// draw hud
 		hud.draw(g);
 		super.draw(g);
