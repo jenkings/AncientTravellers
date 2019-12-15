@@ -25,6 +25,7 @@ import Sound.Sound;
 public class LevelState extends GameState{
 	public static boolean DEBUG = false;
 	
+	protected Sound theme;
 	protected Eustac eustac;
 	protected Aporis aporis;
 	protected Dryfus dryfus;
@@ -55,7 +56,6 @@ public class LevelState extends GameState{
 		}
 		font = new Font("Joystix Monospace", Font.PLAIN, 15);
 		pausefont = new Font("Joystix Monospace", Font.PLAIN, 30);
-		init();
 	}
 
 	@Override

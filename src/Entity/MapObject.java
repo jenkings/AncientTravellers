@@ -5,6 +5,7 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 
 import Main.GamePanel;
+import Sound.Sound;
 import TileMap.Tile;
 import TileMap.TileMap;
 
@@ -217,7 +218,13 @@ public abstract class MapObject
 	public void setRight(boolean b) { right = b; }
 	public void setUp(boolean b) { up = b; }
 	public void setDown(boolean b) { down = b; }
-	public void setJumping(boolean b) { jumping = b; }
+	public void setJumping(boolean b) { 
+		if(jumping == false && falling == false) {
+			Sound sound = new Sound("/Sound/Effects/jump.wav");
+			sound.play();
+		}
+		jumping = b; 
+	}
 	
 	public boolean notOnScreen() {
 		return x + xmap + width < 0 || x + xmap - width > GamePanel.WIDTH || 

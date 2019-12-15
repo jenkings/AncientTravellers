@@ -116,7 +116,6 @@ public class Ghost extends Enemy
 	
 	public boolean isDead() {
 		if(dead) {
-			System.out.println("dead");
 			Sound sound = new Sound("/Sound/Effects/ghost-death.wav");
 			sound.play();
 		}

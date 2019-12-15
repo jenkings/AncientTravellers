@@ -29,7 +29,6 @@ public class Level1State extends LevelState
 	
 	public Level1State(GameStateManager gsm){
 		super(gsm);
-		init();
 	}
 	
 	public void init() {
@@ -99,50 +98,53 @@ public class Level1State extends LevelState
 	
 	
 	public void update() {
-		super.update();
-		if(paused) return;
-
-		switch (actualPlayer) {
-	    	case 0:  tileMap.setPosition(GamePanel.WIDTH / 2 - eustac.getx(), GamePanel.HEIGHT / 2 - eustac.gety()); break;
-	    	case 1:  tileMap.setPosition(GamePanel.WIDTH / 2 - aporis.getx(), GamePanel.HEIGHT / 2 - aporis.gety());break;
-	    	case 2:  tileMap.setPosition(GamePanel.WIDTH / 2 - dryfus.getx(), GamePanel.HEIGHT / 2 - dryfus.gety());break;
-		}
-		
+		try {
+			super.update();
+			if(paused) return;
+	
+			switch (actualPlayer) {
+		    	case 0:  tileMap.setPosition(GamePanel.WIDTH / 2 - eustac.getx(), GamePanel.HEIGHT / 2 - eustac.gety()); break;
+		    	case 1:  tileMap.setPosition(GamePanel.WIDTH / 2 - aporis.getx(), GamePanel.HEIGHT / 2 - aporis.gety());break;
+		    	case 2:  tileMap.setPosition(GamePanel.WIDTH / 2 - dryfus.getx(), GamePanel.HEIGHT / 2 - dryfus.gety());break;
+			}
+		}catch(Exception e) {}
 	}
 	
 	public void draw(Graphics2D g) {
-		// draw background
-		bg.draw(g); 
-		exit.update();
-		// draw tilemap
-		tileMap.draw(g);	
-		exit.draw(g);
-		// draw controllers
-		for(int i = 0; i < controllers.size(); i++){
-			controllers.get(i).draw(g);
-		}
-		
-		// draw players
-		eustac.draw(g);
-		aporis.draw(g);
-		dryfus.draw(g);
-		
-		// draw enemies
-		for(int i = 0; i < enemies.size(); i++){
-			enemies.get(i).draw(g);
-		}
-
-		// draw explosions
-		for(int i = 0; i < explosions.size(); i++)
-		{
-			explosions.get(i).setMapPosition((int)tileMap.getx(), (int)tileMap.gety());
-			explosions.get(i).draw(g);
-		}
-		
-		
-		// draw hud
-		hud.draw(g);
-		super.draw(g);
+		try {
+			// draw background
+			bg.draw(g); 
+			exit.update();
+			// draw tilemap
+			tileMap.draw(g);	
+			exit.draw(g);
+			// draw controllers
+			for(int i = 0; i < controllers.size(); i++){
+				controllers.get(i).draw(g);
+			}
+			
+			// draw players
+			eustac.draw(g);
+			aporis.draw(g);
+			dryfus.draw(g);
+			
+			// draw enemies
+			for(int i = 0; i < enemies.size(); i++){
+				enemies.get(i).draw(g);
+			}
+	
+			// draw explosions
+			for(int i = 0; i < explosions.size(); i++)
+			{
+				explosions.get(i).setMapPosition((int)tileMap.getx(), (int)tileMap.gety());
+				explosions.get(i).draw(g);
+			}
+			
+			
+			// draw hud
+			hud.draw(g);
+			super.draw(g);
+		}catch(Exception e) {}
 	}
 		
 }

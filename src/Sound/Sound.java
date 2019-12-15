@@ -26,4 +26,20 @@ public class Sound {
 	         e.printStackTrace();
 	      }
 	   }
+	   
+	   public void stop(){
+		   clip.stop();
+	   }
+	   
+	   public void loop(){
+		      try{
+		         new Thread(){
+		            public void run(){
+		               clip.loop();
+		            }
+		         }.start();
+		      }catch(Throwable e){
+		         e.printStackTrace();
+		      }
+		   }
 	}

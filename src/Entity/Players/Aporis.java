@@ -10,6 +10,7 @@ import Entity.Animation;
 import Entity.Enemy;
 import Entity.Player;
 import Entity.Solid;
+import Sound.Sound;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -19,7 +20,7 @@ public class Aporis extends Player
 
 	private boolean flinching;
 	private long flinchTimer;
-	
+	private Sound glide = new Sound("/Sound/Effects/fly-loop.wav");
 	
 	// gliding
 	private boolean gliding;
@@ -93,6 +94,13 @@ public class Aporis extends Player
 	
 	public void setGliding(boolean b)
 	{
+		if(b && !gliding) {
+			glide.loop();
+		}else if(gliding && !b) {
+			glide.stop();
+		}else if(currentAction != GLIDING) {
+			glide.stop();
+		}
 		gliding = b;
 	}
 
