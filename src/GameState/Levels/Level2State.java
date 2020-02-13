@@ -12,7 +12,6 @@ import Entity.Enemies.Mummy;
 import Entity.Players.Aporis;
 import Entity.Players.Dryfus;
 import Entity.Players.Eustac;
-import Entity.Solids.Platform;
 import GameState.GameStateManager;
 import GameState.LevelState;
 import Main.GamePanel;
@@ -50,8 +49,6 @@ public class Level2State extends LevelState{
 
 		hud = new HUD(eustac,aporis,dryfus);
 		hud.setActualPlayer(actualPlayer);
-
-		solids.add(new Platform(tileMap,200,280));
 
 		populateEnemies();
 		createControlls();

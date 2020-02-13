@@ -97,8 +97,5 @@ public class HUD {
 		if(dryfus.getHealth() > 0)
 			g.drawImage(health[dryfus.getHealth()-1], 700, 519, null);
 		g.drawImage(dryfusSprites[dryfusState], 625, 525, null);
-		
-		//g.drawString(player.getHealth() + "/" + player.getMaxHealth(), 30, 25);
-		//g.drawString(player.getFire() / 100 + "/" + player.getMaxFire() / 100, 30, 45);
 	}
 }

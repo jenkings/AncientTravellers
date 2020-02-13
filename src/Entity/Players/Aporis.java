@@ -92,8 +92,7 @@ public class Aporis extends Player
 	public int getMaxHealth() { return maxHealth; }
 	
 	
-	public void setGliding(boolean b)
-	{
+	public void setGliding(boolean b){
 		if(b && !gliding) {
 			glide.loop();
 		}else if(gliding && !b) {
@@ -104,69 +103,49 @@ public class Aporis extends Player
 		gliding = b;
 	}
 
-	
-	public void hit(int damage)
-	{
-		if(flinching)
-		{
+	public void hit(int damage){
+		if(flinching){
 			return;
 		}
 		health -= damage;
-		if(health < 0)
-		{
+		if(health < 0){
 			health = 0;
 		}
 		flinching = true;
 		flinchTimer = System.nanoTime();
 	}
 	
-	private void getNextPosition()
-	{
+	private void getNextPosition(){
 		// movement
-		if(left)
-		{
+		if(left){
 			dx -= moveSpeed;
-			if(dx < -maxSpeed)
-			{
+			if(dx < -maxSpeed){
 				dx = -maxSpeed;
 			}
-		}
-		else if(right)
-		{
+		}else if(right){
 			dx += moveSpeed;
-			if(dx > maxSpeed)
-			{
+			if(dx > maxSpeed){
 				dx = maxSpeed;
 			}
-		}
-		else 
-		{
-			if(dx > 0)
-			{
+		}else {
+			if(dx > 0){
 				dx -= stopSpeed;
-				if(dx < 0)
-				{
+				if(dx < 0){
 					dx = 0;
 				}
-			}
-			else if(dx < 0) 
-			{
+			}else if(dx < 0) {
 				dx += stopSpeed;
-				if(dx > 0)
-				{
+				if(dx > 0){
 					dx = 0;
 				}
 			}
 		}
 		
 		// jumping
-		if(jumping  && !falling)
-		{
+		if(jumping  && !falling){
 			dy = jumpStart;
 			falling = true;
 		}
-		
-		
 		
 		if(nearLadder && up && (x%tileSize >= tileSize/2) && (x%tileSize <= tileSize/2 + 5)) {
 			onLadder = true;
@@ -182,8 +161,7 @@ public class Aporis extends Player
 
 		
 		// falling
-		if(falling)
-		{
+		if(falling){
 			if(dy > 0 && gliding){
 				dy += fallSpeed * 0.1;
 			}else if (!onLadder){
@@ -206,8 +184,7 @@ public class Aporis extends Player
 		}
 	}
 	
-	public void update(ArrayList<Solid> solids) 
-	{
+	public void update(ArrayList<Solid> solids) {
 		// update position
 		getNextPosition();
 		checkTileMapCollision();
@@ -215,8 +192,7 @@ public class Aporis extends Player
 		setPosition(xtemp, ytemp);
 		
 		// check done flinching 
-		if(flinching)
-		{
+		if(flinching){
 			long elapsed = (System.nanoTime() - flinchTimer) / 1000000;
 			if(elapsed > 1000)
 			{
@@ -237,12 +213,9 @@ public class Aporis extends Player
 			
 		}
 		
-		else if(dy > 0)		
-		{
-			if(gliding) 
-			{
-				if(currentAction != GLIDING)
-				{
+		else if(dy > 0){
+			if(gliding){
+				if(currentAction != GLIDING){
 					currentAction = GLIDING;
 					animation.setFrames(sprites.get(GLIDING));
 					animation.setDelay(100);
@@ -258,20 +231,15 @@ public class Aporis extends Player
 				width = 60;
 			}
 		}
-		else if(left || right)
-		{
-			if(currentAction != WALKING)
-			{
+		else if(left || right){
+			if(currentAction != WALKING){
 				currentAction = WALKING;
 				animation.setFrames(sprites.get(WALKING));
 				animation.setDelay(80);
 				width = 60;
 			}
-		}
-		else 
-		{
-			if(currentAction != IDLE)
-			{
+		}else{
+			if(currentAction != IDLE){
 				currentAction = IDLE;
 				animation.setFrames(sprites.get(IDLE));
 				animation.setDelay(400);
