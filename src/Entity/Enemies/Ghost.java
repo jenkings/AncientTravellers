@@ -83,7 +83,7 @@ public class Ghost extends Enemy
 	
 	public void update()
 	{
-		// update position
+		// update position;
 		getNextPosition();
 		checkTileMapCollision();
 		setPosition(xtemp, ytemp);

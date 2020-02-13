@@ -3,6 +3,7 @@ package GameState.Levels;
 import java.awt.Graphics2D;
 import java.awt.Point;
 
+import Entity.Collectibles.Apple;
 import Entity.Controller;
 import Entity.Exit;
 import Entity.HUD;
@@ -52,7 +53,8 @@ public class Level2State extends LevelState{
 
 		populateEnemies();
 		createControlls();
-		
+		addCollectibles();
+
 		theme = new Sound("/Sound/Background/sound1.wav");
 		theme.loop();
 	}
@@ -72,6 +74,10 @@ public class Level2State extends LevelState{
 		Mummy m = new Mummy(tileMap);
 		m.setPosition(550,215);
 		enemies.add(m);
+	}
+
+	private void addCollectibles(){
+		collectibles.add(new Apple(tileMap,520,140));
 	}
 	
 	private void createControlls(){
@@ -120,6 +126,11 @@ public class Level2State extends LevelState{
 			for(int i = 0; i < controllers.size(); i++){
 				controllers.get(i).draw(g);
 			}
+
+			//draw collectibles
+			for(int i = 0; i < collectibles.size(); i++){
+				collectibles.get(i).draw(g);
+			}
 	
 			// draw players
 			eustac.draw(g);
@@ -135,6 +146,7 @@ public class Level2State extends LevelState{
 			for(int i = 0; i < solids.size(); i++){
 				solids.get(i).draw(g);
 			}
+
 	
 			// draw explosions
 			for(int i = 0; i < explosions.size(); i++){

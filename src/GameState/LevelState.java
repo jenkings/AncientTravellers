@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import Entity.Collectibles.Collectible;
 import Entity.Controller;
 import Entity.Enemy;
 import Entity.Exit;
@@ -35,6 +36,7 @@ public class LevelState extends GameState{
 	protected ArrayList<Explosion> explosions;
 	protected ArrayList<Controller> controllers;
 	protected ArrayList<Solid> solids;
+	protected ArrayList<Collectible> collectibles;
 	protected Exit exit;
 	protected boolean paused = false;
 	private int pauseChoice = 0;
@@ -64,6 +66,7 @@ public class LevelState extends GameState{
 		solids = new ArrayList<Solid>();
 		explosions = new ArrayList<Explosion>();
 		controllers = new ArrayList<Controller>();
+		collectibles = new ArrayList<Collectible>();
 	}
 	
 	protected void checkAlive() {
@@ -113,6 +116,11 @@ public class LevelState extends GameState{
 		// update all solids
 		for(int i = 0; i < solids.size(); i ++){
 			solids.get(i).update();
+		}
+
+		//update all collectibles
+		for(int i = 0; i < collectibles.size(); i ++){
+			collectibles.get(i).update();
 		}
 		
 		//Check if characters are near controller
