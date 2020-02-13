@@ -88,7 +88,6 @@ public class HUD {
 			g.drawImage(health[eustac.getHealth()-1], 100, 519, null);
 		g.drawImage(eustacSprites[eustacState], 25, 525, null);
 		
-		
 		if(aporis.getHealth() > 0)
 			g.drawImage(health[aporis.getHealth()-1], 400, 519, null);
 		g.drawImage(aporisSprites[aporisState], 325, 525, null);
@@ -97,5 +96,17 @@ public class HUD {
 		if(dryfus.getHealth() > 0)
 			g.drawImage(health[dryfus.getHealth()-1], 700, 519, null);
 		g.drawImage(dryfusSprites[dryfusState], 625, 525, null);
+
+		for(int i = 0; i< 3; i++){
+			if(aporis.inventory.getSlotContent(i) != null)
+				g.drawImage(aporis.inventory.getSlotContent(i).getSprite(), 92 + (i*44), 550, null);
+			if(dryfus.inventory.getSlotContent(i) != null)
+				g.drawImage(dryfus.inventory.getSlotContent(i).getSprite(), 392 + (i*44), 550, null);
+			if(eustac.inventory.getSlotContent(i) != null)
+				g.drawImage(eustac.inventory.getSlotContent(i).getSprite(), 692 + (i*44), 550, null);
+		}
+
+
+
 	}
 }

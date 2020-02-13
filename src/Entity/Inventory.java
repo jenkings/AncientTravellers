@@ -22,4 +22,12 @@ public class Inventory {
         }
     }
 
+    public Items getSlotContent(int slot){
+        if(slot >= 0 && slot <= 2){
+            return this.items[slot];
+        }else{
+            return null;
+        }
+    }
+
 }

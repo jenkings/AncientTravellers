@@ -78,9 +78,9 @@ public class Level2State extends LevelState{
 
 	private void addCollectibles(){
 		collectibles.add(new Apple(tileMap,520,170));
-		collectibles.add(new Apple(tileMap,550,170));
-		collectibles.add(new Apple(tileMap,580,170));
-		collectibles.add(new Apple(tileMap,610,170));
+		collectibles.add(new Apple(tileMap,560,170));
+		collectibles.add(new Apple(tileMap,600,170));
+		collectibles.add(new Apple(tileMap,630,170));
 	}
 
 	private void createControlls(){

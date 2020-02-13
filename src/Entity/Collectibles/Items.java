@@ -1,21 +1,35 @@
 package Entity.Collectibles;
 
+import GameState.LevelState;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+
 public enum Items
 {
+    APPLE("Apple", LevelState.class.getClass().getResourceAsStream("/Sprites/Collectibles/apple.png"));
 
-    APPLE("STOP"), GREEN("GO"), ORANGE("SLOW DOWN");
 
+    private BufferedImage sprite;
+    private String name;
 
-    private String action;
-
-    public String getAction()
-    {
-        return this.action;
+    public String getName() {
+        return this.name;
+    }
+    public BufferedImage getSprite() {
+        return this.sprite;
     }
 
 
-    private Items(String action)
-    {
-        this.action = action;
+    private Items(String name, InputStream file){
+        this.name = name;
+        try {
+            this.sprite = ImageIO.read(file).getSubimage(0, 0, 30, 30);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
