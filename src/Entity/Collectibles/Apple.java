@@ -9,27 +9,24 @@ import java.awt.image.BufferedImage;
 
 public class Apple extends Collectible {
     private BufferedImage[] sprites;
-    final int width = 30;
-    final int height = 30;
-    final int cwidth = 35;
-    final int cheight = 35;
+
 
     public Apple(TileMap tm, int x, int y) {
         super(tm, x, y);
-
+        width = 30;
+        height = 30;
+        cwidth = 20;
+        cheight = 20;
+        this.dropitem = Items.APPLE;
         // load sprites
-        try
-        {
+        try {
             BufferedImage spritesheet = ImageIO.read(getClass().getResourceAsStream("/Sprites/Collectibles/apple.png"));
             sprites = new BufferedImage[4];
-            for(int i = 0; i < sprites.length; i++)
-            {
+            for(int i = 0; i < sprites.length; i++) {
                 sprites[i] = spritesheet.getSubimage(i * width, 0, width, height);
             }
 
-        }
-        catch(Exception e)
-        {
+        }catch(Exception e) {
             e.printStackTrace();
         }
 

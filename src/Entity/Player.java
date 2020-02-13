@@ -2,6 +2,7 @@ package Entity;
 import java.awt.Graphics2D;
 
 import Dialogs.Monolog;
+import Entity.Collectibles.Collectible;
 import TileMap.TileMap;
 
 public class Player extends MapObject{
@@ -11,11 +12,13 @@ public class Player extends MapObject{
 	protected Controller nearestController;
 	protected Monolog monolog;
 	protected TileMap tm;
+	protected Inventory inventory;
 	
 	
 	public Player(TileMap tm) {
 		super(tm);
 		this.tm = tm;
+		this.inventory = new Inventory();
 		nearestController = null;
 	}
 	
@@ -65,6 +68,10 @@ public class Player extends MapObject{
 	
 	public void say(String text) {
 		this.monolog = new Monolog(this.tm,text,this);
+	}
+
+	public boolean touchedCollectible(Collectible c){
+		return inventory.addToInventory(c);
 	}
 
 }

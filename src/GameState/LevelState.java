@@ -24,7 +24,7 @@ import Main.GamePanel;
 import Sound.Sound;
 
 public class LevelState extends GameState{
-	public static boolean DEBUG = false;
+	public static boolean DEBUG = true;
 	
 	protected Sound theme;
 	protected Eustac eustac;
@@ -127,10 +127,30 @@ public class LevelState extends GameState{
 		aporis.setNearestController(null);
 		eustac.setNearestController(null);
 		dryfus.setNearestController(null);
+
+
 		for(int j = 0; j < controllers.size(); j++){
 			if(controllers.get(j).intersects(aporis)){aporis.setNearestController(controllers.get(j));}
 			if(controllers.get(j).intersects(eustac)){eustac.setNearestController(controllers.get(j));}
 			if(controllers.get(j).intersects(dryfus)){dryfus.setNearestController(controllers.get(j));}
+		}
+
+		for(int j = 0; j < collectibles.size(); j++){
+ 			if(collectibles.get(j).intersects(aporis)){
+				if(aporis.touchedCollectible(collectibles.get(j))){
+					collectibles.remove(j);
+				}
+ 			}
+			if(collectibles.get(j).intersects(eustac)){
+				if(eustac.touchedCollectible(collectibles.get(j))){
+					collectibles.remove(j);
+				}
+			}
+			if(collectibles.get(j).intersects(dryfus)){
+				if(dryfus.touchedCollectible(collectibles.get(j))){
+					collectibles.remove(j);
+				}
+			}
 		}
 		
 		//check, if all characters are in finish zone

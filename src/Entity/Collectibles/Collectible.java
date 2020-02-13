@@ -12,7 +12,7 @@ public class Collectible extends MapObject {
 	protected int actualMove;
 	protected int maxMove;
 	protected boolean moveDirection = true;
-
+	protected Items dropitem;
 
 
 	public Collectible(TileMap tm, int x, int y) {
@@ -21,6 +21,10 @@ public class Collectible extends MapObject {
 		actualMove = 0;
 		maxMove = 5;
 		facingRight = true; //kvůli vykreslování
+	}
+
+	public Items getDropItem(){
+		return this.dropitem;
 	}
 
 	public void use(Player player) {

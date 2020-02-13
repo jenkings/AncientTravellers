@@ -77,9 +77,12 @@ public class Level2State extends LevelState{
 	}
 
 	private void addCollectibles(){
-		collectibles.add(new Apple(tileMap,520,140));
+		collectibles.add(new Apple(tileMap,520,170));
+		collectibles.add(new Apple(tileMap,550,170));
+		collectibles.add(new Apple(tileMap,580,170));
+		collectibles.add(new Apple(tileMap,610,170));
 	}
-	
+
 	private void createControlls(){
 		Controller c; 
 		BlockWorker w;
@@ -109,7 +112,7 @@ public class Level2State extends LevelState{
 		    	case 2:  tileMap.setPosition(GamePanel.WIDTH / 2 - dryfus.getx(), GamePanel.HEIGHT / 2 - dryfus.gety());break;
 			}
 		}catch(Exception e) {}
-		
+
 	}
 	
 	public void draw(Graphics2D g) {
