@@ -9,6 +9,8 @@ import Workers.Worker;
 
 public class Collectible extends MapObject{
 	protected Worker worker;
+	protected int actualMove;
+	protected int maxMove;
 
 	public Collectible(TileMap tm, int x, int y){
 		super(tm);
