@@ -105,8 +105,5 @@ public class HUD {
 			if(eustac.inventory.getSlotContent(i) != null)
 				g.drawImage(eustac.inventory.getSlotContent(i).getSprite(), 692 + (i*44), 550, null);
 		}
-
-
-
 	}
 }
