@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 
 import Entity.Collectibles.Apple;
+import Entity.Collectibles.Grape;
 import Entity.Controller;
 import Entity.Exit;
 import Entity.HUD;
@@ -78,7 +79,7 @@ public class Level2State extends LevelState{
 
 	private void addCollectibles(){
 		collectibles.add(new Apple(tileMap,520,170));
-		collectibles.add(new Apple(tileMap,560,170));
+		collectibles.add(new Grape(tileMap,560,170));
 		collectibles.add(new Apple(tileMap,600,170));
 		collectibles.add(new Apple(tileMap,630,170));
 	}

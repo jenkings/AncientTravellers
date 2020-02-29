@@ -9,7 +9,8 @@ import java.io.InputStream;
 
 public enum Items
 {
-    APPLE("Apple", LevelState.class.getClass().getResourceAsStream("/Sprites/Collectibles/apple.png"));
+	APPLE("Apple", LevelState.class.getClass().getResourceAsStream("/Sprites/Collectibles/apple.png")),
+	GRAPE("Grape", LevelState.class.getClass().getResourceAsStream("/Sprites/Collectibles/grape.png"));
 
 
     private BufferedImage sprite;
