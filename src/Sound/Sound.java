@@ -8,14 +8,18 @@ import Main.Game;
 public class Sound {
 	   private AudioClip clip;
 	   public Sound(String name){
+	   	/*
 	      try
 	      {
 	         clip = Applet.newAudioClip(Game.class.getResource(name));
 	      }catch (Throwable e){
 	         e.printStackTrace();
 	      }
+
+	   	 */
 	   }
 	   public void play(){
+	   	/*
 	      try{
 	         new Thread(){
 	            public void run(){
@@ -25,13 +29,16 @@ public class Sound {
 	      }catch(Throwable e){
 	         e.printStackTrace();
 	      }
+
+	   	 */
 	   }
 	   
 	   public void stop(){
-		   clip.stop();
+		   //clip.stop();
 	   }
 	   
 	   public void loop(){
+	   	/*
 		      try{
 		         new Thread(){
 		            public void run(){
@@ -41,5 +48,9 @@ public class Sound {
 		      }catch(Throwable e){
 		         e.printStackTrace();
 		      }
+		      */
+	   	 
 		   }
+
+
 	}
