@@ -140,7 +140,7 @@ public abstract class MapObject
 			}
 		}
 		if(dy > 0){
-			if((bottomLeft || bottomRight || (bl == Tile.LADDER) || (br == Tile.LADDER)) && !onLadder){
+			if((bottomLeft || bottomRight || (bl == Tile.LADDER && tl != Tile.LADDER) || (br == Tile.LADDER  && tl != Tile.LADDER) ) && !onLadder){
 				dy = 0;
 				falling = false;
 				ytemp = (currRow + 1) * tileSize - cheight / 2;
