@@ -5,9 +5,7 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 import Entity.Controller;
-import Entity.Enemy;
 import Entity.Exit;
-import Entity.Explosion;
 import Entity.HUD;
 import Entity.Controllers.Lever;
 import Entity.Enemies.Ghost;
@@ -19,6 +17,7 @@ import GameState.LevelState;
 import Main.GamePanel;
 import TileMap.Background;
 import TileMap.TileMap;
+import Utils.EntityLoader.EnemiesLoader;
 import Workers.BlockWorker;
 
 public class Level1State extends LevelState
@@ -69,6 +68,7 @@ public class Level1State extends LevelState
 	}
 	
 	private void populateEnemies(){
+		/*
 		Ghost s; 
 		Point[] points = new Point[] {
 			new Point(50,50),
@@ -80,6 +80,10 @@ public class Level1State extends LevelState
 		 	s.setPosition(points[i].x*2, points[i].y*2);
 			enemies.add(s);
 		}
+		*/
+		EnemiesLoader el = new EnemiesLoader(tileMap);
+		el.loadFromFile("/Maps/level1-1.ent");
+		enemies = el.getEnemies();
 	}
 	
 	private void createControlls(){
